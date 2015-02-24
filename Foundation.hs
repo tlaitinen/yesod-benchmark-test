@@ -46,7 +46,7 @@ instance Yesod App where
     -- Store session data on the client in encrypted cookies,
     -- default session idle timeout is 120 minutes
     makeSessionBackend _ = fmap Just $ defaultClientSessionBackend
-        120    -- timeout in minutes
+        (10 * 365 * 24 * 60) -- timeout in minutes
         "config/client_session_key.aes"
 
     defaultLayout widget = do
